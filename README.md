@@ -46,24 +46,46 @@
 
 ### 3. 运行
 
+**手动运行**：
 ```bash
 ./scripts/run.sh
 ```
 
-后台运行：
+**后台运行**：
 ```bash
 nohup ./scripts/run.sh > /dev/null 2>&1 &
 ```
 
-停止：
+**停止**：
 ```bash
 pkill -f "python3 src/monitor.py"
 ```
 
-### 4. 查看日志
+### 4. 开机自启（推荐）
+
+macOS 开机自动启动并崩溃重启：
 
 ```bash
+# 安装服务
+./scripts/install-service.sh
+
+# 查看状态
+launchctl list | grep com.lightautomation.monitor
+
+# 卸载服务
+launchctl unload ~/Library/LaunchAgents/com.lightautomation.monitor.plist
+rm ~/Library/LaunchAgents/com.lightautomation.monitor.plist
+```
+
+### 5. 查看日志
+
+```bash
+# 运行日志
 tail -f logs/monitor.log
+
+# 启动服务日志
+tail -f logs/launchd.out.log
+tail -f logs/launchd.err.log
 ```
 
 ## 项目结构
@@ -73,8 +95,10 @@ desktop-light-automation/
 ├── README.md
 ├── requirements.md       # 需求文档
 ├── design.md             # 设计文档
-├── config.json           # 配置文件
+├── config.example.json   # 配置模板
+├── config.json           # 配置文件（本地创建，不提交）
 ├── state.json            # 运行时状态（自动生成）
+├── .gitignore            # Git 忽略规则
 ├── logs/                 # 日志目录
 │   └── monitor.log
 ├── src/                  # 源代码
@@ -86,7 +110,9 @@ desktop-light-automation/
 │   ├── debouncer.py      # 防抖逻辑
 │   └── trigger.py        # 场景触发
 └── scripts/
-    └── run.sh            # 启动脚本
+    ├── run.sh                          # 启动脚本
+    ├── install-service.sh              # 开机自启安装脚本
+    └── com.lightautomation.monitor.plist  # launchd 配置模板
 ```
 
 ## 状态流转

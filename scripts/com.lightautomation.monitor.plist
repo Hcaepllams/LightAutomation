@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <!-- 服务标识 -->
+    <key>Label</key>
+    <string>com.lightautomation.monitor</string>
+
+    <!-- 工作目录 -->
+    <key>WorkingDirectory</key>
+    <string>$(PROJECT_DIR)</string>
+
+    <!-- 执行程序 -->
+    <key>ProgramArguments</key>
+    <array>
+        <string>$(PROJECT_DIR)/scripts/run.sh</string>
+    </array>
+
+    <!-- 运行环境 -->
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PATH</key>
+        <string>/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
+        <key>PYTHONUNBUFFERED</key>
+        <string>1</string>
+    </dict>
+
+    <!-- 日志输出 -->
+    <key>StandardOutPath</key>
+    <string>$(PROJECT_DIR)/logs/launchd.out.log</string>
+    <key>StandardErrorPath</key>
+    <string>$(PROJECT_DIR)/logs/launchd.err.log</string>
+
+    <!-- 自动重启 -->
+    <key>RunAtLoad</key>
+    <true/>
+    <key>KeepAlive</key>
+    <true/>
+
+    <!-- 崩溃后等待 5 秒重启 -->
+    <key>ThrottleInterval</key>
+    <integer>5</integer>
+</dict>
+</plist>
