@@ -1,0 +1,30 @@
+# 运行时文件
+state.json
+logs/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+venv/
+env/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# 测试
+*.log
+.pytest_cache/
+.coverage
+htmlcov/

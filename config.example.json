@@ -1,0 +1,16 @@
+{
+  "pc": {
+    "ip": "192.168.1.100",
+    "ping_interval_sec": 30,
+    "online_threshold": 3,
+    "offline_threshold": 5
+  },
+  "shortcuts": {
+    "arrive": "到家",
+    "leave": "离开"
+  },
+  "logging": {
+    "level": "INFO",
+    "max_days": 7
+  }
+}
